@@ -1,0 +1,494 @@
+html,body{position:relative;width:100%;height:100%;margin:0;padding:0;color:var(--color-text);background-color:var(--color-background);}
+ul,ol,li{list-style:none;margin:0;padding:0;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;vertical-align:middle;}
+h1,h2,h3,h4,h5,h6{margin:0;padding:0;}
+p,span{margin:0;padding:0;}
+
+@mixin badge($bg-color: var(--color-background), $text-color: var(--color-white)) {
+    display:inline-block;
+    min-width:20px;
+    height:20px;
+    padding:0 6px;
+    font-size:1rem;
+    line-height:20px;
+    color:$text-color;
+    text-align:center;
+    white-space:nowrap;
+    vertical-align:middle;
+    background-color:$bg-color;
+    border-radius:10px;
+}
+
+@mixin input{
+    width:100%;
+    height:36px;
+    padding:0 8px;
+    font-size:1.3rem;
+    border:1px solid var(--color-border);
+    border-radius:4px;
+}
+
+header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    height:60px;
+    padding:0 20px;
+    background-color:var(--color-white);
+    box-shadow:0 2px 4px rgba(0,0,0,0.1);
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:100;
+
+    & > div{
+        display:flex;
+        align-items:center;
+        font-size:1.4rem;
+        width:calc(50% - 40px);
+
+        h1{
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .year{
+            @include badge(var(--color-background), var(--color-text));
+            font-size:1.2rem;
+            font-weight:600;
+            border-radius:4px;
+            height:auto;
+            margin-left:8px;
+            border:1px solid var(--color-border);
+        }
+
+        &:nth-child(2){
+            width:80px;
+
+            a{
+                display:block;
+                width:100%;
+                height:100%;
+            }
+        }
+
+        &:nth-child(3){
+            justify-content:flex-end;
+
+            div{ 
+                font-size:1.4rem;
+
+                &.badge{
+                    margin-right:6px;
+
+                    &.usr01{
+                        @include badge(var(--color-primary), var(--color-white));
+                    }
+                }
+
+                &.usr_menu{
+                    margin-left:4px;
+                    cursor:pointer;
+
+                    .material-symbols-outlined{
+                        position:relative;
+                        top:2px;
+                        font-size:1.8rem;
+                        transition:transform 0.3s ease-in-out;
+
+                        &.rotate{
+                            transform:rotate(180deg);
+                        }
+                    }
+
+                    .usr_menu_list{
+                        display:none;
+                        position:absolute;
+                        top:100%;
+                        right:16px;
+                        background-color:var(--color-white);
+                        box-shadow:0 2px 4px rgba(0,0,0,0.1);
+                        border-radius:0 0 4px 4px;
+                        overflow:hidden;
+
+                        &.show{
+                            display:block;
+                        }
+
+                        ul{
+                            li{
+                                padding:10px 24px;
+                                border-bottom:1px solid var(--color-border);
+                                
+                                a{
+                                    font-size:1.4rem;
+
+                                    .material-symbols-outlined{
+                                        position:relative;
+                                        top:3px;
+                                        font-size:1.6rem;
+                                        margin-right:4px;
+                                    }
+                                }
+
+                                &:last-child{
+                                    border-bottom:none;
+                                    color:var(--color-danger);
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+section{
+    //margin-top:60px;
+    position:relative;
+    top:60px;
+    display:flex;
+    width:100%;
+    height:calc(100% - 60px);
+
+    .snb_wrap{
+        background-color:var(--color-primary);
+        color:var(--color-white);
+        width:240px;
+        padding:20px;
+
+        ul{
+            li{
+
+                .stit{
+                    display:block;
+                    font-size:1.1rem;
+                    color:var(--color-white);
+                    opacity:0.8;
+                    padding:10px 0;
+                }
+
+                div{
+                    display:flex;
+                    align-items:center;
+
+                    a{
+                        display:inline-block;
+                        font-size:1.4rem;
+                        padding:4px 8px;
+                    }
+                }
+
+                .ring_cnt{
+                    display: none;
+                    margin-bottom: 24px;
+                    background-color: rgba(255,255,255, 0.15);
+                    border-radius: 8px;
+                    padding: 8px 16px 12px 32px;
+
+                    li{
+                        a{
+                            display:block;
+                            font-size:1.2rem;
+                            padding:4px 8px;
+
+                            &::before{
+                                content: "\e2e6";
+                                display:inline-block;
+                                font-family: "Material Symbols Outlined";
+                                font-size:1.6rem;
+                                position:relative;
+                                top:4px;
+                                margin:0 6px 0 -22px;
+                                opacity:0.25;
+                            }
+                        }
+
+                        &.comp{
+                            font-weight:500;
+                            color:var(--color-comp);
+
+                            a{
+                                &::before{
+                                    opacity:1;
+                                }
+                            }
+                        }
+                    }
+
+                    li+li{
+                        margin-top:4px;
+                    }
+                }
+
+                div+div{
+                    margin-top:12px;
+                }
+            }
+
+            li+li{
+                margin-top:20px;
+            }
+        }
+
+        .copyright{
+            position:absolute;
+            bottom:0;
+            left:0;
+            font-size:1.1rem;
+            font-weight:300;
+            //opacity:0.5;
+            background-color:rgba(0,0,0,0.25);
+            padding:16px 20px;
+            width:240px;
+            line-height:1.8rem;
+        }
+    }
+
+    .container{
+        flex:1;
+        overflow:auto;
+        padding:20px;
+
+        .ap_content{
+            width: var(--width-paper);
+            margin:0 auto;
+
+            .breadcrumb{
+                ul{
+                    display:flex;
+                    align-items:center;
+                    margin:10px 0;
+
+                    li{
+                        font-size:1.1rem;   
+                        color:var(--color-gray);
+                        
+                        &+li{
+                            position:relative;
+                            margin-left:6px;
+
+                            &::before{
+                                content:"\e5cc";
+                                display:inline-block;
+                                font-family:"Material Symbols Outlined";
+                                font-size:1.1rem;
+                                position:relative;
+                                top:2px;
+                                margin-right:6px;
+                            }
+                        }
+
+                        &:last-child{
+                            color:var(--color-text);
+                        }
+                    }
+                }
+            }
+
+            .required{
+                color:var(--color-danger);
+                font-size:1.4rem;
+            }
+
+            .flex{
+                display: flex;
+
+                &.aibottom{
+                    align-items: flex-end;
+                }
+
+                &.jcbetween{
+                    justify-content: space-between;
+                }
+
+                div{
+                    margin:0 0 20px;
+                    font-size: 1.2rem;
+                }
+
+                .tooltip{
+                    font-size: 1.6rem;
+                    cursor: help;
+
+                    &[data-tooltips]{
+                        &:hover{
+                            position:relative;
+
+                            &::before{
+                                all:initial;
+                                display:inline-block;
+                                padding:6px 12px;
+                                background-color: var(--color-guide-text);
+                                content:attr(data-tooltips);
+                                color: var(--color-white);
+                                border-radius:4px;
+                                position:absolute;
+                                bottom:16px;
+                                width:max-content;
+                                left:50%;
+                                transform:translate(-50%,0);
+                                margin-bottom:14px;
+                                text-align:center;
+                                font-size:1.2rem;
+                            }
+
+                            &::after{
+                                all:initial;
+                                display:inline-block;
+                                width:0;
+                                height:0;
+                                border-left:10px solid transparent;
+                                border-right:10px solid transparent;
+                                border-top:10px solid var(--color-guide-text);
+                                position:absolute;
+                                bottom:16px;
+                                content:"";
+                                left:50%;
+                                transform:translate(-50%,0);
+                                margin-bottom:5px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            h2{
+                font-size:2.4rem;
+                font-weight:700;
+                margin:0 0 20px;
+            }
+
+            .contents_wrap{
+                background-color:var(--color-white);
+                border-radius:8px;
+                box-shadow:0 2px 4px rgba(0,0,0,0.1);
+                padding:30px;
+
+                h3{
+                    font-size:1.5rem;
+                    font-weight:600;
+                    margin-bottom:20px;
+
+                    &.gap_top{
+                        margin-top:48px;
+                    }
+
+                    span{
+                        @include badge(var(--color-lightblue), var(--color-primary));
+                        border-radius:4px;
+                        margin-right:8px;
+                    }
+                }
+
+                .response_table{
+                    display:grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 12px;
+
+                    .colspan2{
+                        grid-column: span 2;
+                    }
+                    .colspan3{
+                        grid-column: span 3;
+                    }
+                    .colspan4{
+                        grid-column: span 4;
+                    }
+
+                    .gap_minus{
+                        margin-top:-4px;
+                    }
+
+                    .guide{
+                        font-size: 1.2rem;
+                        border:1px solid var(--color-guide-border);
+                        border-radius: 4px;
+                        color: var(--color-guide-text);
+                        background-color: var(--color-guide-back);
+                        padding: 8px 12px;
+
+                        strong{
+                            font-size: 1.2rem;
+                        }
+
+                        span{
+                            font-size: 1.4rem;
+                            position: relative;
+                            top:2px;
+                        }
+
+                        .info{
+                            font-size: 1.2rem;
+                            top:0;
+                            color:var(--color-danger);
+                        }
+                    }
+
+                    label{
+                        display:block;
+                        font-size:1.2rem;
+                        font-weight:500;
+                        margin-bottom:4px;
+
+                        &.fit{
+                            width:fit-content;
+                        }
+                    }
+
+                    .radio_group{
+                        display:flex;
+                        align-items:center;
+                        margin-top:10px;
+
+                        label{
+                            position:relative;
+                            top:4px;
+                            margin-right:12px;
+                            font-size:1.3rem;
+                        }
+                    }
+
+                    .info{
+                        display:inline-block;
+                        font-size:1.2rem;
+                        color:var(--color-warning);
+                        margin-top:6px;
+                    }
+
+                    input[type="text"], input[type="password"], input[type="date"], select{
+                        @include input;
+
+                        &[readonly]{
+                            background-color:var(--color-background);
+                        }
+
+                        &::placeholder{
+                            color:var(--color-gray);
+                            opacity:.75;
+                        }
+                    }
+
+                    input[type="checkbox"], input[type="radio"]{
+                        width:auto;
+                        height:auto;
+                        margin-right:4px;
+                    }
+
+                    select{
+                        @include input;
+                        
+                        option{
+                            font-size:1.3rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
