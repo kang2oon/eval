@@ -29,6 +29,64 @@ p,span{margin:0;padding:0;}
     border-radius:4px;
 }
 
+@mixin button($bg-color: var(--color-primary), $text-color: var(--color-white), $border-color: var(--color-primary)){
+    font-size: 1.4rem;
+    background-color: $bg-color;
+    border: 1px solid $border-color;
+    color: $text-color;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@mixin tooltip{
+    font-size: 1.6rem;
+    cursor: help;
+
+    &[data-tooltips]{
+        &:hover{
+            position:relative;
+
+            &::before{
+                all:initial;
+                display:inline-block;
+                padding:6px 12px;
+                background-color: var(--color-guide-text);
+                content:attr(data-tooltips);
+                white-space: pre-wrap;
+                line-height: 1.4;
+                color: var(--color-white);
+                border-radius:4px;
+                position:absolute;
+                bottom:16px;
+                width:max-content;
+                //max-width: 350px;
+                left:50%;
+                transform:translate(-50%,0);
+                margin-bottom:14px;
+                text-align:center;
+                font-size:1.2rem;
+            }
+
+            &::after{
+                all:initial;
+                display:inline-block;
+                width:0;
+                height:0;
+                border-left:8px solid transparent;
+                border-right:8px solid transparent;
+                border-top:8px solid var(--color-guide-text);
+                position:absolute;
+                bottom:16px;
+                content:"";
+                left:50%;
+                transform:translate(-50%,0);
+                margin-bottom:6px;
+            }
+        }
+    }
+}
+
 header{
     display:flex;
     align-items:center;
@@ -312,49 +370,10 @@ section{
                 }
 
                 .tooltip{
-                    font-size: 1.6rem;
-                    cursor: help;
-
-                    &[data-tooltips]{
-                        &:hover{
-                            position:relative;
-
-                            &::before{
-                                all:initial;
-                                display:inline-block;
-                                padding:6px 12px;
-                                background-color: var(--color-guide-text);
-                                content:attr(data-tooltips);
-                                color: var(--color-white);
-                                border-radius:4px;
-                                position:absolute;
-                                bottom:16px;
-                                width:max-content;
-                                left:50%;
-                                transform:translate(-50%,0);
-                                margin-bottom:14px;
-                                text-align:center;
-                                font-size:1.2rem;
-                            }
-
-                            &::after{
-                                all:initial;
-                                display:inline-block;
-                                width:0;
-                                height:0;
-                                border-left:10px solid transparent;
-                                border-right:10px solid transparent;
-                                border-top:10px solid var(--color-guide-text);
-                                position:absolute;
-                                bottom:16px;
-                                content:"";
-                                left:50%;
-                                transform:translate(-50%,0);
-                                margin-bottom:5px;
-                            }
-                        }
-                    }
+                    @include tooltip();
                 }
+
+                
             }
 
             h2{
@@ -382,6 +401,15 @@ section{
                         @include badge(var(--color-lightblue), var(--color-primary));
                         border-radius:4px;
                         margin-right:8px;
+
+                        &.desc{
+                            padding:0 0 0 4px;
+                            font-size: 1.2rem;
+                            font-weight: 400;
+                            line-height: normal;
+                            color: var(--color-text);
+                            background-color: transparent;
+                        }
                     }
                 }
 
@@ -485,6 +513,182 @@ section{
                         option{
                             font-size:1.3rem;
                         }
+                    }
+
+                    .tbl_wrap{
+                        border:1px solid var(--color-border);
+                        border-radius: 8px;
+                        //overflow: hidden;
+
+                        .sub_tit{
+                            position: relative;
+                            font-size: 1.3rem;
+                            padding:8px 12px;
+                            border-radius: 8px 8px 0 0;
+                            background-color: var(--color-background);
+
+                            .word_cnt{
+                                position: absolute;
+                                top: 50%;
+                                right:12px;
+                                font-size: 1.1rem;
+                                transform:translate(0, -50%);
+
+                                span{
+                                    font-size: 1.1rem;
+                                }
+                            }
+                        }
+
+                        textarea{
+                            width:100%;
+                            min-height: 120px;
+                            border:none;
+                            border-radius: 0 0 8px 8px;
+                            outline: none;
+                            resize: none;
+                            box-sizing: border-box;
+                            padding:12px;
+                            font-size: 1.2rem;
+                            line-height: 1.4;
+                            overflow-y: hidden;
+                        }
+
+                        table{
+                            width: 100%;
+                            border-collapse: collapse;
+                            border-spacing: 0;
+
+                            caption{
+                                display: none;
+                            }
+
+                            thead{
+                                background-color: var(--color-lightblue);
+
+                                th{
+                                    font-size: 1.2rem;
+                                    padding:12px 0;
+
+                                    &+th{
+                                        border-left: 1px solid var(--color-border);
+                                    }
+
+                                    .tooltip{
+                                        @include tooltip();
+                                        position: relative;
+                                        top: 4px;
+                                    }
+                                }
+                            }
+
+                            tfoot{
+                                background-color: var(--color-background);
+
+                                td{
+                                    font-size: 1.2rem;
+                                    padding:12px 8px;
+                                    font-weight: 500;
+
+                                    span{
+                                        font-size: 1.2rem;
+                                    }
+
+                                    &:first-child{
+                                        text-align: center;
+                                        border-radius: 0 0 0 8px;
+                                    }
+
+                                    &:last-child{
+                                        border-radius: 0 0 8px 0;
+                                    }
+
+                                    &+td{
+                                        border-left: 1px solid var(--color-border);
+                                    }
+
+                                    &.taright{
+                                        text-align: right;
+                                    }
+                                }
+                            }
+
+                            tbody{
+
+                                tr{
+
+                                    &+tr{
+                                        border-top:1px solid var(--color-border);
+                                    }
+
+                                    td{
+                                        font-size: 1.2rem;
+                                        padding:10px 8px;
+
+                                        span, a{
+                                            font-size: 1.2rem;
+                                        }
+
+                                        &:first-child{
+                                            text-align: center;
+                                        }
+
+                                        &+td{
+                                            border-left: 1px solid var(--color-border);
+                                        }
+
+                                        &.taright{
+                                            text-align: right;
+                                        }
+
+                                        input, select{
+                                            width: calc(100% + 16px);
+                                            height: 100%;
+                                            font-size: 1.2rem;
+                                            line-height: 2rem;
+                                            border: none;
+                                            border-radius: 0;
+                                            padding:8px;
+                                            margin:-8px;
+
+                                            &[type=number]{
+                                                text-align: right;
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            .btn_wrap{
+                display: flex;
+                justify-content: space-between;
+                margin-top:20px;
+
+                button{
+                    @include button();    
+
+                    span{
+                        position: relative;
+                        top: 3px;
+                        font-size: 1.6rem;
+                    }
+
+                    &.type2{
+                        background-color: var(--color-white);
+                        border-color: var(--color-primary);
+                        color: var(--color-primary);
+                    }
+
+                    &.type3{
+                        background-color: var(--color-background);
+                        border-color: var(--color-border);
+                        color: var(--color-text);
                     }
                 }
             }
