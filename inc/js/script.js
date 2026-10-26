@@ -1,17 +1,73 @@
 $(document).ready(function() {
-   $('.usr_menu').click(function() {
-      $('.usr_menu_list').toggleClass('show');
-      $('.usr_menu > .material-symbols-outlined').toggleClass('rotate');
-   });
+  $('.usr_menu').click(function() {
+    $('.usr_menu_list').toggleClass('show');
+    $('.usr_menu > .material-symbols-outlined').toggleClass('rotate');
+  });
 
-   $('.ring_cnt').first().show();
+  $('.ring_cnt').first().show();
    
-   $('a.d1').click(function(e) {
-      //e.preventDefault();
-      const $targetCnt = $(this).closest('.ring').parent().next('.ring_cnt');
-      $('.ring_cnt').slideUp(200);
-      $targetCnt.stop().slideDown(200);
-   });
+  $('a.d1').click(function(e) {
+    //e.preventDefault();
+    const $targetCnt = $(this).closest('.ring').parent().next('.ring_cnt');
+    $('.ring_cnt').slideUp(200);
+    $targetCnt.stop().slideDown(200);
+  });
+
+  $('.list_wrap li').click(function(){
+    $('.list_wrap li').removeClass('current');
+    $(this).addClass('current');
+  });
+
+  $('.modal_close').click(function(){
+    $('.modal_wrap').hide();
+  });
+
+  $('.btn.score_guide').click(function(){
+    $('#score_guide').show();
+  });
+
+  $('.score_check').click(function(){
+    const $guide = $(this).next('.score_check_guide');
+    $guide.stop().slideToggle(200);
+  });
+
+$(function () {
+  // .marking 내부의 라디오 버튼 선택 변경 시
+  $(document).on('change', '.marking input[type="radio"]', function () {
+    const $this = $(this);
+    const radioName = $this.attr('name');
+    const selectedVal = $this.val(); // 체크된 값 (예: "4", "3" ...)
+
+    // 1. 같은 name 그룹의 label active 클래스 갱신
+    $(`.marking input[type="radio"][name="${radioName}"]`)
+      .next('label')
+      .removeClass('active');
+    $this.next('label').addClass('active');
+
+    // 2. 상위 .mark_wrap 내의 .marking_amount 텍스트 업데이트
+    const $amount = $this.closest('.mark_wrap').find('.marking_amount');
+
+    if ($amount.length > 0 && selectedVal !== undefined) {
+      // 소수점 1자리(4.0) 형식으로 표시할 경우:
+      const formattedScore = parseFloat(selectedVal).toFixed(1);
+      $amount.text(formattedScore);
+
+      // (정수 그대로 표시하려면 아래 코드 사용)
+      // $amount.text(selectedVal);
+    }
+});
+
+  // 페이지 로드 시 이미 체크된 항목이 있을 경우 초기 반영
+  $('.marking input[type="radio"]:checked').each(function () {
+    const $this = $(this);
+    $this.next('label').addClass('active');
+
+    const selectedVal = $this.val();
+    if (selectedVal !== undefined) {
+      $this.closest('.mark_wrap').find('.marking_amount').text(parseFloat(selectedVal).toFixed(1));
+    }
+  });
+});
 
 
    // 각 스텝별 입력 진행상태 표기 도넛(링) 인디케이터
@@ -137,5 +193,80 @@ $(function() {
   // 페이지 로드 시 기존 내용이 채워져 있을 경우 초기 실행
   $('.auto-textarea').each(function() {
     handleTextarea.call(this);
+  });
+});
+
+// 화면 분할
+$(function() {
+  const $wrapper =$('#splitWrapper');
+  const $leftPanel =$('#leftPanel');
+  const $resizer =$('#resizer');
+
+  let isDragging = false;
+
+  // 마우스 누름
+  $resizer.on('mousedown', function(e) {
+    isDragging = true;
+    $resizer.addClass('is-dragging');$('body').addClass('resizing');
+  });
+
+  // 마우스 이동 (전체 document 대상)
+  $(document).on('mousemove', function(e) {
+    if (!isDragging) return;
+
+    const containerOffsetLeft = $wrapper.offset().left;
+    const containerWidth = $wrapper.outerWidth();
+    const pointerX = e.clientX - containerOffsetLeft;
+
+    // 백분율(%) 계산
+    let percentage = (pointerX / containerWidth) * 100;
+
+    // 최소 15%, 최대 85% 범위 제한
+    percentage = Math.max(15, Math.min(percentage, 85));
+
+    $leftPanel.css('flex', `0 0 ${percentage}%`);
+  });
+
+  // 마우스 뗌
+  $(document).on('mouseup', function() {
+    if (isDragging) {
+      isDragging = false;
+      $resizer.removeClass('is-dragging');$('body').removeClass('resizing');
+    }
+  });
+});
+
+// 평가항목 선택 시 해당 위치 이동 및 하이라이트
+$(function () {
+  // data-score-target 속성을 가진 요소 클릭 이벤트 위임
+  $(document).on('click', '[data-score-target]', function () {
+    const targetKey = $(this).data('score-target');
+    if (!targetKey) return;
+
+    // data-score 값이 일치하는 좌측 요소 탐색
+    const $target = $(`[data-score="${targetKey}"]`);
+
+    if ($target.length > 0) {
+      // 1. 해당 요소 위치로 부드럽게 스크롤 이동
+      $target[0].scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+
+      // 2. 애니메이션 클래스 초기화 후 재적용
+      $target.removeClass('highlight-target');
+
+      // 리플로우(Reflow) 강제 발생으로 연속 클릭 시 애니메이션 재실행 보장
+      void $target[0].offsetWidth;
+
+      $target.addClass('highlight-target');
+
+      // 3. 3초 후 강조 클래스 제거
+      setTimeout(function () {
+        $target.removeClass('highlight-target');
+      }, 3000);
+    } else {
+      console.warn(`[data-score="${targetKey}"] 요소를 찾을 수 없습니다.`);
+    }
   });
 });

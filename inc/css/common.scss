@@ -4,15 +4,21 @@
     --color-white: #ffffff;
     --color-text: #232323;
     --color-gray: #999999;
+    --color-gray2: #666666;
     --color-border: #e0e0e0;
     --color-danger: #ff4d4f;
+    --color-danger-back: #fee2e2;
     --color-success: #52c41a;
     --color-warning: #ed6700;
+    --color-warning-back: #f5c5a0;
     --color-comp: #fae100;
     --color-lightblue: #e0edff;
+    --color-lightblue2: #aeccf7;
     --color-guide-back: #f0fdf4;
     --color-guide-text: #166534;
     --color-guide-border: #bbf7d0;
+    --color-badge: #363199;
+    --width-snb: 240px;
     --width-paper: 794px;
 }
 :root[data-dark=true]{
