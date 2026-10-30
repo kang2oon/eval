@@ -39,10 +39,10 @@ $(function () {
     const selectedVal = $this.val(); // 체크된 값 (예: "4", "3" ...)
 
     // 1. 같은 name 그룹의 label active 클래스 갱신
-    $(`.marking input[type="radio"][name="${radioName}"]`)
-      .next('label')
-      .removeClass('active');
-    $this.next('label').addClass('active');
+    // $(`.marking input[type="radio"][name="${radioName}"]`)
+    //   .next('label')
+    //   .removeClass('active');
+    // $this.next('label').addClass('active');
 
     // 2. 상위 .mark_wrap 내의 .marking_amount 텍스트 업데이트
     const $amount = $this.closest('.mark_wrap').find('.marking_amount');

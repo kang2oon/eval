@@ -1093,6 +1093,21 @@ section .container .split-wrapper .panel.right-panel .accodion_wrap .accodion_it
 section .container .split-wrapper .panel.right-panel .accodion_wrap .accodion_item .accodion_content .mark_wrap .mark_content {
   padding: 8px;
 }
+section .container .split-wrapper .panel.right-panel .accodion_wrap .accodion_item .accodion_content .mark_wrap .mark_content textarea {
+  width: 100%;
+  min-height: 120px;
+  border: none;
+  border-radius: 0 0 8px 8px;
+  outline: none;
+  resize: none;
+  box-sizing: border-box;
+  padding: 12px;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  overflow-y: hidden;
+  min-height: 100px;
+  padding: 8px;
+}
 section .container .split-wrapper .panel.right-panel .accodion_wrap .accodion_item .accodion_content .mark_wrap .mark_content .mark_guide {
   background-color: var(--color-background);
   border: 1px solid var(--color-border);
@@ -1180,6 +1195,36 @@ section .container .split-wrapper .panel.right-panel .accodion_wrap .accodion_it
   padding: 12px 0;
   font-size: 1.2rem;
   cursor: pointer;
+}
+section .container .split-wrapper .panel.right-panel .btn_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+section .container .split-wrapper .panel.right-panel .btn_wrap button {
+  padding: 6px 12px 10px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  color: var(--color-gray2);
+  border-radius: 4px;
+}
+section .container .split-wrapper .panel.right-panel .btn_wrap button span {
+  position: relative;
+  top: 3px;
+  font-size: 1.6rem;
+  margin: 0 2px;
+}
+section .container .split-wrapper .panel.right-panel .btn_wrap button.tmp {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+section .container .split-wrapper .panel.right-panel .btn_wrap button.app {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
 }
 section .container .split-wrapper .resizer {
   width: 6px;

@@ -7,7 +7,7 @@
     <link rel="preload" as="style" crossorigin="anonymous"  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <link rel="preload" href="https://code.jquery.com/jquery-2.2.4.min.js" as="script">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=stat_minus_1,logout,person,dashboard,playlist_add_check,all_inbox,task_alt,chevron_right,check_circle,info,arrow_forward,save,arrow_back,close" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=stat_minus_1,logout,person,dashboard,playlist_add_check,all_inbox,task_alt,chevron_right,chevron_left,check_circle,info,arrow_forward,save,arrow_back,close" />
     <link rel="stylesheet" href="/inc/css/common.min.css" />
     <link rel="stylesheet" href="/inc/css/layout.min.css" />
     <script src="/inc/js/script.js"></script>
@@ -469,7 +469,7 @@
                                 </div>
                             </div>
                             <h4 class="gap_top"><span>03-3</span>영농 동기 및 5개년 발전 경로</h4>
-                            <div class="response_table">
+                            <div class="response_table" data-score="3-3">
                                 <div class="tbl_wrap colspan4">
                                     <div class="sub_tit">(가) 영농 동기 및 비전&middot;목표</div>
                                     <div class="txtarea plane">
@@ -485,7 +485,7 @@
                             </div>
                             <h3 class="gap_top"><span>04</span>영농 수행 계획</h3>
                             <h4 class=""><span>04-1</span>영농 방법</h4>
-                            <div class="response_table">
+                            <div class="response_table" data-score="3-2">
                                 <div class="tbl_wrap colspan4">
                                     <div class="sub_tit">(가) 재배&middot;사육 유형</div>
                                     <div class="txtarea plane">
@@ -586,7 +586,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="tbl_wrap colspan4">
+                                <div class="tbl_wrap colspan4" data-score="4-1">
                                     <div class="sub_tit">[5년차]</div>
                                     <table>
                                         <caption>5년차 판매 계획</caption>
@@ -861,7 +861,7 @@
                             </div>
                             <h3 class="gap_top"><span>07</span>5개년 경영 계획표 (단위: 평&middot;두&middot;수&middot;천원)</h3>
                             <div class="response_table" data-score="5-1">
-                                <div class="tbl_wrap colspan4">
+                                <div class="tbl_wrap colspan4"  data-score="4-3">
                                     <table>
                                         <caption>5년차 판매 계획</caption>
                                         <colgroup>
@@ -962,7 +962,7 @@
                                 </div>
                             </div>
                             <h3 class="gap_top"><span>08</span>비목 분류별 5년차 경영비 (단위: 천원)</h3>
-                            <div class="response_table">
+                            <div class="response_table" data-score="4-2">
                                 <div class="tbl_wrap colspan4">
                                     <table>
                                         <caption>5년차 판매 계획</caption>
@@ -1344,9 +1344,251 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="mark_wrap">
+                                    <div class="mark_header" data-score-target="3-1">
+                                        <div>[3-①] 영농 준비의 실질적 이행 수준</div>
+                                        <div><span class="marking_amount">0.0</span>/3</div>
+                                    </div>
+                                    <div class="mark_content">
+                                        <div class="mark_guide">
+                                            교육&middot;훈련 이력과 선택 품목의 연계성 &middot; 영농 경험의 구체성과 계획 반영 정도 &middot; 보완 노력과 실행 의지<br/>
+                                            <button class="score_check">점수부여 기준</button>
+                                            <div class="score_check_guide">
+                                                <ul class="">
+                                                    <li>3점: 세 요소가 구체적으로 제시되고 준비 이력이 선택 품목&middot;계획과 신뢰성 있게 연결됨</li>
+                                                    <li>2점: 준비 이력은 제시되나 계획과의 연결이 다소 형식적이거나 일부 요소가 미흡함</li>
+                                                    <li>0점: 준비 이력이 추상적&middot;단순 나열에 그치거나 선택 품목과의 연관성이 불명확함</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="marking">
+                                            <ul>
+                                                <li>
+                                                    <input type="radio" id="3-1-3" value="3" name="3-1" > 
+                                                    <label for="3-1-3">3점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="3-1-2" value="2" name="3-1" > 
+                                                    <label for="3-1-2">2점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="3-1-0" value="0" name="3-1" > 
+                                                    <label for="3-1-0">0점</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mark_wrap">
+                                    <div class="mark_header" data-score-target="3-2">
+                                        <div>[3-②] 품목&middot;축종&middot;재배기술 이해도</div>
+                                        <div><span class="marking_amount">0.0</span>/3</div>
+                                    </div>
+                                    <div class="mark_content">
+                                        <div class="mark_guide">
+                                            생육(사육) 특성과 핵심 관리요소 이해 &middot; 재배(사육) 기술과 시설 운영 이해 &middot; 예상 문제와 대응 방안 이해<br/>
+                                            <button class="score_check">점수부여 기준</button>
+                                            <div class="score_check_guide">
+                                                <ul class="">
+                                                    <li>3점: 세 요소에 대한 이해가 구체적&middot;정확하며 실제 영농계획과 연계하여 설명함</li>
+                                                    <li>2점: 전반적인 이해는 인정되나 일부 내용의 정확성·구체성 또는 계획과의 연계성이 다소 미흡함</li>
+                                                    <li>0점: 이해가 부족하거나 일반적인 내용만 제시하여 실제 영농 수행 역량을 확인하기 어려움</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="marking">
+                                            <ul>
+                                                <li>
+                                                    <input type="radio" id="3-2-3" value="3" name="3-2" > 
+                                                    <label for="3-2-3">3점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="3-2-2" value="2" name="3-2" > 
+                                                    <label for="3-2-2">2점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="3-2-0" value="0" name="3-2" > 
+                                                    <label for="3-2-0">0점</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mark_wrap">
+                                    <div class="mark_header" data-score-target="3-3">
+                                        <div>[3-③] 영농동기&middot;계획의 일관성</div>
+                                        <div><span class="marking_amount">0.0</span>/4</div>
+                                    </div>
+                                    <div class="mark_content">
+                                        <div class="mark_guide">
+                                            영농 동기의 명확성과 진정성 &middot; 동기&middot;비전&middot;준비 이력&middot;5개년 계획 간 논리적 일관성 &middot; 구체적 실천 및 준비 정도<br/>
+                                            <button class="score_check">점수부여 기준</button>
+                                            <div class="score_check_guide">
+                                                <ul class="">
+                                                    <li>4점: 영농 동기와 준비 과정 및 계획이 일관되며 영농 의지와 실천 의지가 구체적으로 확인됨</li>
+                                                    <li>2점: 전반적인 진정성은 인정되나 계획의 일관성 또는 실천 내용의 구체성이 다소 부족함</li>
+                                                    <li>0점: 영농 동기와 계획이 형식적이거나 영농 의지 및 진정성이 확인되지 않음</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="marking">
+                                            <ul>
+                                                <li>
+                                                    <input type="radio" id="3-3-4" value="4" name="3-3" > 
+                                                    <label for="3-3-4">4점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="3-3-2" value="2" name="3-3" > 
+                                                    <label for="3-3-2">2점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="3-3-0" value="0" name="3-3" > 
+                                                    <label for="3-3-0">0점</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mark_wrap">
+                                    <div class="mark_header" data-score-target="4-1">
+                                        <div>[4-①] 5년차 매출액 근거의 구체성&middot;합리성</div>
+                                        <div><span class="marking_amount">0.0</span>/4</div>
+                                    </div>
+                                    <div class="mark_content">
+                                        <div class="mark_guide">
+                                            <button class="score_check">점수부여 기준</button>
+                                            <div class="score_check_guide">
+                                                <ul class="">
+                                                    <li>4점: 규모&middot;단수&middot;단가를 모두 제시하고 단가&middot;생산량 추정에 본인&middot;현장조사&middot;거래자료 등 근거를 구체적으로 제시</li>
+                                                    <li>3점: 규모&middot;단수&middot;단가를 제시하고 추정 근거를 일반&middot;통계 자료 수준에서 제시</li>
+                                                    <li>2점: 매출 수치는 제시하나 산출과정&middot;근거 제시가 일부 미흡함</li>
+                                                    <li>1점: 매출 목표 수치만 제시하고 산출근거가 사실상 부재함</li>
+                                                    <li>0점: 매출 수치 미기재 또는 산출이 비합리적임 (규모&middot;단수와 모순)</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="marking">
+                                            <ul>
+                                                <li>
+                                                    <input type="radio" id="4-1-4" value="4" name="4-1" > 
+                                                    <label for="4-1-4">4점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="4-1-3" value="3" name="4-1" > 
+                                                    <label for="4-1-3">3점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="4-1-2" value="2" name="4-1" > 
+                                                    <label for="4-1-2">2점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="4-1-1" value="1" name="4-1" > 
+                                                    <label for="4-1-1">1점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="4-1-0" value="0" name="4-1" > 
+                                                    <label for="4-1-0">0점</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mark_wrap">
+                                    <div class="mark_header" data-score-target="4-2">
+                                        <div>[4-②] 5년차 경영비 산정의 합리성</div>
+                                        <div><span class="marking_amount">0.0</span>/3</div>
+                                    </div>
+                                    <div class="mark_content">
+                                        <div class="mark_guide">
+                                            ※ 고가 농기계&middot;시설 확장 등 일시적 투자비는 감가상각으로 평준화하여 기재하며 일시 급증을 감점 요인으로 보지 않음<br/>
+                                            <button class="score_check">점수부여 기준</button>
+                                            <div class="score_check_guide">
+                                                <ul class="">
+                                                    <li>3점: 주요 경영비(생산비)를 누락 없이 제시하고 금액&middot;증가율이 매출액 규모와 정합적으로 제시됨</li>
+                                                    <li>2점: 주요 경영비(생산비)를 제시하였으나 일부 항목&middot;근거가 미흡함</li>
+                                                    <li>1점: 총 경영비(생산비)만 제시하고 주요 비목 구성 및 근거가 사실상 부재함</li>
+                                                    <li>0점: 경영비 미기재 또는 매출&middot;사업 규모 대비 경영비가 비현실적(과소&middot;과대)임</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="marking">
+                                            <ul>
+                                                <li>
+                                                    <input type="radio" id="4-2-3" value="3" name="4-2" > 
+                                                    <label for="4-2-3">3점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="4-2-2" value="2" name="4-2" > 
+                                                    <label for="4-2-2">2점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="4-2-1" value="1" name="4-2" > 
+                                                    <label for="4-2-1">1점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="4-2-0" value="0" name="4-2" > 
+                                                    <label for="4-2-0">0점</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mark_wrap">
+                                    <div class="mark_header" data-score-target="4-3">
+                                        <div>[4-③] 5년차 농업소득&middot;소득률의 타당성</div>
+                                        <div><span class="marking_amount">0.0</span>/2</div>
+                                    </div>
+                                    <div class="mark_content">
+                                        <div class="mark_guide">
+                                            <button class="score_check">점수부여 기준</button>
+                                            <div class="score_check_guide">
+                                                <ul class="">
+                                                    <li>2점: 농업소득&middot;소득률이 품목 특성에 부합하고 5개년 흐름(투자&middot;회수 시점)이 합리적으로 설명됨</li>
+                                                    <li>1점: 농업소득&middot;소득률은 제시되나 5개년 흐름의 설명이 일부 미흡함</li>
+                                                    <li>0점: 농업소득 산정이 매출&middot;경영비와 모순되거나 타당성 근거가 부재함</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="marking">
+                                            <ul>                                                
+                                                <li>
+                                                    <input type="radio" id="4-3-2" value="2" name="4-3" > 
+                                                    <label for="4-3-2">2점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="4-3-1" value="1" name="4-3" > 
+                                                    <label for="4-3-1">1점</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" id="4-3-0" value="0" name="4-3" > 
+                                                    <label for="4-3-0">0점</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mark_wrap">
+                                    <div class="mark_header">
+                                        <div>종합의견</div>
+                                    </div>
+                                    <div class="mark_content">
+                                        <textarea class="auto-textarea" placeholder="내용을 입력하세요."></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="btn_wrap">
+                        <div>
+                            <button><span class="material-symbols-outlined">chevron_left</span>이전</button>
+                        </div>
+                        <div>
+                            <button class="tmp"><span class="material-symbols-outlined">save</span>임시저장</button>
+                            <button class="app"><span class="material-symbols-outlined">check_circle</span>저장 후 제출</button>
+                        </div>
+                        <div>
+                            <button>다음<span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
                     </div>
                 </div>
             </div>
